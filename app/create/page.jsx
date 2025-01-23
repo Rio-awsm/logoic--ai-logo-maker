@@ -4,6 +4,7 @@ import LogoDesc from "@/components/LogoDesc";
 import LogoDesign from "@/components/LogoDesign";
 import LogoIdea from "@/components/LogoIdea";
 import LogoTitle from "@/components/LogoTitle";
+import PricingModel from "@/components/PricingModel";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import React from "react";
@@ -37,7 +38,7 @@ const CreateLogo = () => {
          formData={formData}/>
       ) : step == 5 ? (
         <LogoIdea onHandleInputChange={(v) => onHandleInputChange("idea", v)}  formData={formData}/>
-      ) : null}
+      ) : step == 6 ? <PricingModel formData={formData} onHandleInputChange={(v) => onHandleInputChange("pricing", v)} /> : null}
       <div className="flex item-center justify-between mt-10">
         {step != 1 && (
           <Button onClick={() => setStep(step - 1)} variant="outline">

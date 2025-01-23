@@ -32,7 +32,7 @@ export default{
         },
         {
             title: 'Premium',
-            icon: '/thunder.png', 
+            icon: '/coin.png', 
             features: [
                 '⚫ Generate unlimited logos',
                 '⚫ Shorter wait times',
