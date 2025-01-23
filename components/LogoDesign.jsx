@@ -33,6 +33,7 @@ const LogoDesign = ({onHandleInputChange, formdata}) => {
               height={200}
               className="w-full rounded-xl h-[200px] object-cover"
             />
+            <h1 className="mt-3 text-center font-semibold">{design.title}</h1>
           </div>
         ))}
       </div>
