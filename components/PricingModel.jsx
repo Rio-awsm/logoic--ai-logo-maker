@@ -1,10 +1,20 @@
-import React from "react";
+"use client";
+import React, { use, useEffect } from "react";
 import HeadingDesc from "./HeadingDesc";
 import Lookup from "@/constants/Lookup";
 import Image from "next/image";
 import { Button } from "./ui/button";
+import { SignInButton, useUser } from "@clerk/nextjs";
 
-const PricingModel = () => {
+const PricingModel = ({ formData }) => {
+  const { user } = useUser();
+
+  useEffect(() => {
+    console.log("prev:", formData);
+    if (formData?.title && typeof window !== "undefined") {
+      localStorage.setItem("formData", JSON.stringify(formData));
+    }
+  }, [formData]);
   return (
     <div className="">
       <HeadingDesc
@@ -32,7 +42,16 @@ const PricingModel = () => {
                 </h2>
               ))}
             </div>
-            <Button className="mt-5">{pricing.button}</Button>
+            {user ? (
+              <Button className="mt-5">{pricing.button}</Button>
+            ) : (
+              <SignInButton
+                mode="modal"
+                forceRedirectUrl={"/generate-logo?type=" + pricing.title}
+              >
+                <Button className="mt-5">{pricing.button}</Button>
+              </SignInButton>
+            )}
           </div>
         ))}
       </div>
